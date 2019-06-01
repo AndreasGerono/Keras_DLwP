@@ -85,25 +85,32 @@ Z książki:
 Złożone sieci neuronowe (convolutional neural networks): (wcześniej dense-connected models)
 - do analizowania obrazów (computer vision)
 
-convnet:
--operują na tensorach 3d "feature maps" (height, width i depth) (spatial axes i channels)
-	np. dla obrazu RGB debth 3 - channels: red, green, blue / dla czarnobiałego depth 1
-	
-conv2d i maxpolling2d layers
-model.add(layers.Conv2D(64, (3,3), activation = 'relu')) # (3,3) - rozmiar okna do uczenia
-model.add(layers.MaxPooling2D((2,2)))
-
-
-
-	convlavers:				vs 							denselayers:
-	- warstwy uczą się wzorców lokalnych 				- uczą się wzorców globalnych
-	- szuka wzorców w małych oknach						- ten sam wzorzec wykryje tylko w tej samej części obrazu
+	convlavers:						vs 							denselayers:
+	- warstwy uczą się wzorców lokalnych 						- uczą się wzorców globalnych
+	- szuka wzorców w małych oknach								- ten sam wzorzec wykryje tylko w tej samej części obrazu
 	- wykrywa te same wzorce w różnych miejscach
 		(translation-invariant)
 	- małe wzorce łączy w duży obraz
 		(spatial hierarchies of patterns)
+
+convnet:
+-operują na tensorach 3d "feature maps" (height, width i depth) (spatial axes i channels)
+	np. dla obrazu RGB debth 3 - channels: red, green, blue / dla czarnobiałego depth 1
 	
+Conv layers:	https://keras.io/layers/convolutional/
+	model.add(layers.Conv2D(64, (3,3), activation = 'relu', padding = '' )) 
+	- (3,3) - rozmiar okna do uczenia (typowo 3x3 / 5x5)
+	- żeby okno nie ucieło obrazu 'padding'  
+	- 64 - ilość filtrów depth tensora wyjściowego
+	
+Max pool layers:	https://keras.io/layers/pooling/
+	model.add(layers.MaxPooling2D((2,2))) 
+	- agresywnie zmniejsza rozmiar tensora - stride 
 
 
+Conv+maxpool:
 
+	" So the most reasonable subsampling strategy is to first produce dense maps of features (via unstrided convolutions) and then look at the maximal activation of the features over small patches, rather than looking at sparser windows of the inputs (via strided convolutions)"
+
+Convnet na małej liczbie danych:
 
