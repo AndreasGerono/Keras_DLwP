@@ -98,10 +98,11 @@ convnet:
 	np. dla obrazu RGB debth 3 - channels: red, green, blue / dla czarnobiałego depth 1
 	
 Conv layers:	https://keras.io/layers/convolutional/
-	model.add(layers.Conv2D(64, (3,3), activation = 'relu', padding = '' )) 
+	model.add(layers.Conv2D(32, (3,3), activation = 'relu', padding = '' )) 
 	- (3,3) - rozmiar okna do uczenia (typowo 3x3 / 5x5)
 	- żeby okno nie ucieło obrazu 'padding'  
-	- 64 - ilość filtrów depth tensora wyjściowego
+	- 32 - ilość filtrów depth tensora wyjściowego
+	- ilość filtrów powinna wzrastać progresywnie wraz z kolejnymi warstwami
 	
 Max pool layers:	https://keras.io/layers/pooling/
 	model.add(layers.MaxPooling2D((2,2))) 

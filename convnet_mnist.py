@@ -20,6 +20,7 @@ model.add(layers.MaxPooling2D((2,2)))
 model.add(layers.Conv2D(64, (5,5), activation = 'relu', padding = 'same' ))	# (3,3) - rozmiar okna do uczenia
 model.add(layers.MaxPooling2D((2,2)))
 model.add(layers.Conv2D(64, (5,5), activation = 'relu', padding = 'same' ))
+model.add(layers.MaxPooling2D((2,2)))
 model.add(layers.Flatten())									#sieć klasyfikujaca dense przyjmuje 1d - musimy spłaszczyć
 model.add(layers.Dense(64, activation='relu' ))				#jak wcześniej w dense network 
 model.add(layers.Dense(10, activation='softmax' ))
